@@ -1018,4 +1018,36 @@ namespace ValheimPlus.GameClasses
             }
         }
     }
+
+
+    [HarmonyPatch(typeof(Player), "OnSpawned")]
+    public class OnSpawned_Patch
+    {
+        [HarmonyPrefix]
+        internal static void Prefix(Player __instance)
+        {
+            // Configuration.Current.Player.skipIntro
+            if (true)
+            {
+                __instance.m_firstSpawn = false;
+            }
+        }
+    }
+
+    [HarmonyPatch(typeof(Player), "HaveSeenTutorial")]
+    public class HaveSeenTutorial_Patch
+    {
+        [HarmonyPrefix]
+        internal static void Prefix(Player __instance, ref string name)
+        {
+            // Configuration.Current.Player.skipTutorials
+            if (true)
+            {
+                if (!__instance.m_shownTutorials.Contains(name))
+                {
+                    __instance.m_shownTutorials.Add(name);
+                }
+            }
+        }
+    }
 }
