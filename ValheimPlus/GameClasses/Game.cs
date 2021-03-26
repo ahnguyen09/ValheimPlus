@@ -103,4 +103,25 @@ namespace ValheimPlus.GameClasses
             return true;
         }
     }
+
+    /*
+    [HarmonyPatch(typeof(Game), "_RequestRespawn")]
+    public static class Game__RequestRespawn_Patch
+    {
+        private static void Postfix(ref Game __instance)
+        {
+            //Configuration.Current.Player.IsEnabled
+            if (__instance.m_character.IsPlayer())
+            {
+                Player player = (Player)__instance.m_character;
+
+                if (player.IsSafeInHome())
+                {
+                    player.m_seman.AddStatusEffect("Rested", true);
+                }
+            }
+
+        }
+    }
+    */
 }
