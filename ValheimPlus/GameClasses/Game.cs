@@ -105,22 +105,16 @@ namespace ValheimPlus.GameClasses
     }
 
     /*
-    [HarmonyPatch(typeof(Game), "_RequestRespawn")]
-    public static class Game__RequestRespawn_Patch
+    [HarmonyPatch(typeof(Game), "RequestRespawn")]
+    public static class Game_RequestRespawn_Patch
     {
-        private static void Postfix(ref Game __instance)
+        private static void Postfix(ref Game __instance, ref float delay)
         {
-            //Configuration.Current.Player.IsEnabled
-            if (__instance.m_character.IsPlayer())
+            //Player.m_localPlayer.IsSafeInHome() does not seem to work
+            if (true)
             {
-                Player player = (Player)__instance.m_character;
-
-                if (player.IsSafeInHome())
-                {
-                    player.m_seman.AddStatusEffect("Rested", true);
-                }
+                Player.m_localPlayer.m_seman.AddStatusEffect("Rested", true);
             }
-
         }
     }
     */
