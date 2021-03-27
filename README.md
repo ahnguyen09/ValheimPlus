@@ -1,4 +1,6 @@
-![ValheimPlus Logo](https://raw.githubusercontent.com/nxPublic/ValheimPlus/master/logo.png)
+<p align="center">
+  <img src="https://raw.githubusercontent.com/nxPublic/ValheimPlus/master/logo.png" alt="ValheimPlus Logo"/>
+</p>
 
 # ValheimPlus
 A HarmonyX Mod aimed at improving the gameplay quality of Valheim. The mod includes several different main features that allow users to modify the stats of players, buildings and entities. V+ also offers players the ability to build and place objects with very high precision through a sophisticated system, as well as tweaking and modifying already placed objects with equal precision. The goal is to provide V+ as a base modification for Valheim to increase quality of life, tweak the game's difficulty, and in general, improve the player's experience. V+ also comes with a version and configuration control system for servers and users, enabling server owners to ensure that only players with the same configuration are able to join the server.
@@ -109,7 +111,9 @@ We work together closely to make sure all our features are integrated and workin
 ### Kiln, Furnace and Blast Furnace
 * Modify Kiln, Furnace and Blast Furnace processing speed.
 * Modify Kiln, Furnace and Blast Furnace maximum capacity.
+* Disable Fine Wood and/or Round Log processing for Kiln.
 * Allow fuel-type items to be automatically pulled from closest containers.
+* Allow Kiln to stop pulling wood from closest containers when a specific threshold as been reached. 
 * Allow items produced by Kiln, Furnace and Blast Furnace to be automatically placed in the closest containers.
 
 ### Beehive 
@@ -266,8 +270,10 @@ This guide does not cover how to create a dedicated server. These are the steps 
 **Please read the section about Server Config & Version Control (About Version Enforcement) below.**
 
 ## **Linux**
+[Easy to set up and ready to use ValheimPlus servers can be rented here at ZAP-Hosting.com !](https://zap-hosting.com/valheimplus)
 
 ### DIY Valheim and Valheim+ Dedicated Server Installer:
+
 The Njord installer provided by ZeroBandwidth and team allows for you to easily set up your own Dedicated Valheim Server built on Ubuntu Linux. This menu system gives you the option to play Valheim in vanilla mode or with the all modding power of Valheim+.
 * All Njord Menu related questions and support should be directed to his community [Njord Menu Support](https://github.com/Nimdy/Dedicated_Valheim_Server_Script/issues)
 * [Njord Menu Github Page](https://github.com/Nimdy/Dedicated_Valheim_Server_Script) 
@@ -351,12 +357,12 @@ Please see [CONTRIBUTING.md](/CONTRIBUTING.md) for details on compiling V+ for d
 # Official Development Team
 
 * Kevin 'nx#8830' J.- https://github.com/nxPublic
-* Greg 'Zedle' G. - https://github.com/zedle
 * Miguel 'Mixone' T. - https://github.com/Mixone-FinallyHere
 * Lilian 'healiha' C. - https://github.com/healiha
 * Nathan 'NCJ' J. - https://github.com/ncjsvr
 
 # Credits
+* Greg 'Zedle' G. - https://github.com/zedle
 * Paige 'radmint' N. - https://github.com/radmint
 * Chris 'Xenofell' S. - https://github.com/cstamford
 * TheTerrasque - https://github.com/TheTerrasque
@@ -369,3 +375,4 @@ Please see [CONTRIBUTING.md](/CONTRIBUTING.md) for details on compiling V+ for d
 * Jules - https://github.com/sirskunkalot
 * Lilian Cahuzac - https://github.com/healiha
 * Thomas 'Aeluwas#2855' B. - https://github.com/exscape
+* Nick 'baconparticles' P. - https://github.com/baconparticles
