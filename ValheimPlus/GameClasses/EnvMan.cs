@@ -66,4 +66,25 @@ namespace ValheimPlus.GameClasses
         }
         */
     }
+
+    /// <summary>
+    /// Mess with Fog, need more testing to see if fog ever shows up
+    /// </summary>
+    [HarmonyPatch(typeof(EnvMan), "SetEnv")]
+    public static class EnvMan_SetEnv_Patch
+    {
+        private static void Prefix(ref EnvMan __instance, ref EnvSetup env)
+        {
+            env.m_fogDensityNight = 0.001f;
+
+            env.m_fogDensityMorning = 0.008f;
+
+            env.m_fogDensityDay = 0.001f;
+
+            env.m_fogDensityEvening = 0.001f;
+
+            // mess with night intensity, doesn't seem to help
+            // env.m_lightIntensityNight = env.m_lightIntensityNight * 0.25f;
+        }
+    }
 }
