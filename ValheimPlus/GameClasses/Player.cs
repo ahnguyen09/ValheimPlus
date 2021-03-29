@@ -80,9 +80,9 @@ namespace ValheimPlus.GameClasses
             }
 
             /// <summary>
-            /// time test
+            /// Display game clock
             /// </summary>
-            if (true)
+            if (Configuration.Current.GameClock.IsEnabled)
             {
                 EnvMan env = EnvMan.instance;
                 float minuteFrac = Mathf.Lerp(0, 24, env.GetDayFraction());
@@ -97,8 +97,7 @@ namespace ValheimPlus.GameClasses
                 String minutes_str = "";
                 String amPM_str = "";
 
-                // enableAMPM
-                if (true) 
+                if (Configuration.Current.GameClock.useAMPM) 
                 {
                     amPM_str = (hours_int < 12) ? " AM" : " PM";
                     if (hours_int > 12) hours_int -= 12;
@@ -121,7 +120,13 @@ namespace ValheimPlus.GameClasses
                     timeObj.AddComponent<RectTransform>();
 
                     timeText = timeObj.AddComponent<Text>();
-                    timeText.color = new Color(0.9725f, 0.4118f, 0f, 1.0f);
+
+                    float rRatio = Mathf.Clamp01(Configuration.Current.GameClock.textRedChannelRatio);
+                    float gRatio = Mathf.Clamp01(Configuration.Current.GameClock.textGreenChannelRatio);
+                    float bRatio = Mathf.Clamp01(Configuration.Current.GameClock.textBlueChannelRatio);
+                    float aRatio = Mathf.Clamp01(Configuration.Current.GameClock.textTransparencyChannelRatio);
+
+                    timeText.color = new Color(rRatio, gRatio, bRatio, aRatio);
                     timeText.font = msgHud.m_messageCenterText.font;
                     timeText.fontSize = 34;
                     timeText.enabled = true;
@@ -135,7 +140,7 @@ namespace ValheimPlus.GameClasses
                 timeObj.GetComponent<RectTransform>().position = new Vector2(staminaBarRec.position.x, statusEffictBarRec.position.y);
                 timeObj.SetActive(true);
             }
-    }
+        }
 
         private static void ApplyDodgeHotkeys(ref Player __instance, ref Vector3 ___m_moveDir, ref Vector3 ___m_lookDir)
         {
