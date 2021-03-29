@@ -97,7 +97,7 @@ namespace ValheimPlus.GameClasses
                 String minutes_str = "";
                 String amPM_str = "";
 
-                if (Configuration.Current.GameClock.useAMPM) 
+                if (Configuration.Current.GameClock.useAMPM)
                 {
                     amPM_str = (hours_int < 12) ? " AM" : " PM";
                     if (hours_int > 12) hours_int -= 12;
@@ -109,7 +109,7 @@ namespace ValheimPlus.GameClasses
                 if (minutes_int >= 10) minutes_str = minutes_int.ToString();
 
                 Hud hud = Hud.instance;
-                
+
                 Text timeText;
                 if (timeObj == null)
                 {
@@ -259,7 +259,7 @@ namespace ValheimPlus.GameClasses
                 VPlusMapSync.ShouldSyncOnSpawn = false;
             }
 
-            if(Configuration.Current.Player.IsEnabled && Configuration.Current.Player.skipIntro)
+            if (Configuration.Current.Player.IsEnabled && Configuration.Current.Player.skipIntro)
                 __instance.m_firstSpawn = false;
 
         }
@@ -1109,6 +1109,36 @@ namespace ValheimPlus.GameClasses
                 if (!__instance.m_shownTutorials.Contains(name))
                 {
                     __instance.m_shownTutorials.Add(name);
+                }
+            }
+        }
+    }
+
+    [HarmonyPatch(typeof(Player), "Interact")]
+    public class Player_Interact_Patch
+    {
+        private static void Prefix(Player __instance, ref GameObject go)
+        {
+            // enable
+            if (true)
+            {
+                Pickable component = (Pickable)go.GetComponentInParent<Interactable>();
+                if (component != null)
+                {
+                    String itemName = component.transform.name;
+                    bool isMushroom = itemName.ToLower().Contains("mushroom");
+                    bool isRaspberry = itemName.Contains("Raspberry");
+                    bool isBlueberry = itemName.Contains("Blueberry");
+
+                    // simple testing for now
+                    if (isMushroom || isRaspberry || isBlueberry)
+                    {
+                        component.m_amount = 3;
+                    }
+                    else 
+                    {
+                        Gogan.LogEvent("Player", "Interact", itemName, component.m_amount);
+                    }
                 }
             }
         }
