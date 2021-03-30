@@ -330,6 +330,7 @@
   <ItemGroup>
     <Compile Include="AdvancedBuildingMode.cs" />
     <Compile Include="AdvancedEditingMode.cs" />
+    <Compile Include="Configurations\Sections\PickableItemsConfiguration.cs" />
     <Compile Include="Configurations\Sections\MonsterProjectileConfiguration .cs" />
     <Compile Include="Configurations\Sections\PlayerProjectileConfiguration.cs" />
     <Compile Include="Configurations\Sections\CraftFromChestConfiguration.cs" />
@@ -344,7 +345,7 @@
     <Compile Include="Configurations\Sections\SpinningWheelConfiguration.cs" />
     <Compile Include="Configurations\Sections\ValheimPlusConfiguration.cs" />
     <Compile Include="Configurations\Sections\WindmillConfiguration.cs" />
-    <Compile Include="Configurations\Sections\GameClockCongifuration.cs" />
+    <Compile Include="Configurations\Sections\GameClockConfiguration.cs" />
     <Compile Include="Deconstruct.cs" />
     <Compile Include="FirstPerson\VPlusFirstPerson.cs" />
     <Compile Include="FreePlacementRotation.cs" />

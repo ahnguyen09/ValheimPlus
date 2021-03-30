@@ -1114,32 +1114,38 @@ namespace ValheimPlus.GameClasses
         }
     }
 
+ 
     [HarmonyPatch(typeof(Player), "Interact")]
     public class Player_Interact_Patch
     {
+        private static Dictionary<String, int> pickableNames = new Dictionary<String, int>
+        {
+            { "Dandelion", Configuration.Current.PickableItems.dandelionAmount},
+            { "Mushroom", Configuration.Current.PickableItems.mushroomAmount},
+            { "Mushroom_blue", Configuration.Current.PickableItems.mushroomBlueAmount},
+            { "Mushroom_yellow", Configuration.Current.PickableItems.mushroomYelloAmount},
+            { "Thistle", Configuration.Current.PickableItems.thistleAmount}    
+        };
+
         private static void Prefix(Player __instance, ref GameObject go)
         {
             // enable
             if (true)
             {
-                Pickable component = (Pickable)go.GetComponentInParent<Interactable>();
-                if (component != null)
+                if (go.GetComponentInParent<Interactable>() is Pickable) 
                 {
-                    String itemName = component.transform.name;
-                    bool isMushroom = itemName.ToLower().Contains("mushroom");
-                    bool isRaspberry = itemName.Contains("Raspberry");
-                    bool isBlueberry = itemName.Contains("Blueberry");
+                    Pickable component = (Pickable)go.GetComponentInParent<Interactable>();
+                    if (component != null)
+                    {
+                        String itemName = component.transform.name;
+                        String name = itemName.Substring(9, itemName.Length - 7);
 
-                    // simple testing for now
-                    if (isMushroom || isRaspberry || isBlueberry)
-                    {
-                        component.m_amount = 3;
+                        if (pickableNames.ContainsKey(name)) 
+                        {
+                            component.m_amount = pickableNames[name];
+                        }
                     }
-                    else 
-                    {
-                        Gogan.LogEvent("Player", "Interact", itemName, component.m_amount);
-                    }
-                }
+                }             
             }
         }
     }
